@@ -6,12 +6,21 @@ import { useEffect } from "react";
 import Pagination from "./Pagination";
 
 export default function Table() {
-    const { jokes, page, sort, setSort, fetchJokes } = useJokeStore();
+    const {
+        jokes,
+        page,
+        totalPages,
+        limit,
+        sort,
+        setPage,
+        setSort,
+        fetchJokes,
+    } = useJokeStore();
 
     useEffect(() => {
         fetchJokes();
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [page, sort]);
+    }, [page, sort, limit]);
 
     const handleSort = (field) => {
         setSort(field);
@@ -78,8 +87,7 @@ export default function Table() {
                     ))}
                 </tbody>
             </table>
-
-            <Pagination />
+            <Pagination totalPages={totalPages} page={page} setPage={setPage} />
         </div>
     );
 }

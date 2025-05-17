@@ -1,3 +1,4 @@
+import Filters from "@/components/Filters/Filters";
 import Table from "@/components/Table/Table";
 
 export default async function Home() {
@@ -6,6 +7,7 @@ export default async function Home() {
             <h1 className="text-6xl font-light text-center mb-4 text-primary-300">
                 Collection of Jokes
             </h1>
+            <Filters />
             <Table />
         </div>
     );
