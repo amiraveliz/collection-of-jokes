@@ -20,9 +20,9 @@ export default function Table() {
     if (jokes.length === 0) return <div className="p-8">Loading...</div>;
 
     return (
-        <div className="w-full max-w-4xl mx-auto py-4">
+        <div className="w-full max-w-4xl mx-auto py-4 text-black/90">
             <table className="w-[inherit] border border-gray-200">
-                <thead className=" text-gray-700 hidden md:table-header-group">
+                <thead className=" hidden md:table-header-group">
                     <tr>
                         {[
                             { key: "id", label: "Id", width: "90px" },
@@ -34,7 +34,7 @@ export default function Table() {
                                 onClick={() => handleSort(col.key)}
                                 scope="col"
                                 style={{ width: col.width }}
-                                className="p-3 cursor-pointer select-none border-b border-gray-200"
+                                className="p-2 cursor-pointer border-b border-gray-200"
                                 aria-sort={
                                     sort.field === col.key
                                         ? sort.direction === "asc"
@@ -62,14 +62,17 @@ export default function Table() {
                             key={row.id}
                             className="flex flex-col md:table-row border-b border-gray-200"
                         >
-                            <td className="p-3 md:p-2 relative md:table-cell">
+                            <td className="p-2 relative md:table-cell">
                                 {row.id}
                             </td>
-                            <td className="p-3 md:p-2 relative md:table-cell">
+                            <td className="p-2 relative md:table-cell">
                                 {row.type}
                             </td>
-                            <td className="p-3 md:p-2 relative md:table-cell">
-                                {row.setup} Punchline: {row.punchline}
+                            <td className="p-2 relative md:table-cell">
+                                <span className="font-bold block">
+                                    {row.setup}
+                                </span>{" "}
+                                {row.punchline}
                             </td>
                         </tr>
                     ))}

@@ -10,36 +10,37 @@ export default function Pagination() {
     const { totalPages, page, setPage } = useJokeStore();
 
     return (
-        <div className="flex items-center mt-4 text-sm">
+        <div className="flex gap-1 items-center mt-4 text-sm text-white">
             <button
                 onClick={() => setPage(1)}
                 disabled={page === 1}
-                className="hover:bg-gray-400/30 font-bold py-2 px-4 rounded"
+                className="btn-primary"
             >
                 <ChevronFirst />
             </button>
             <button
                 onClick={() => setPage(page - 1)}
                 disabled={page === 1}
-                className="hover:bg-gray-400/30 font-bold py-2 px-4 rounded"
+                className="btn-primary"
             >
                 <ChevronLeft />
             </button>
 
-            <span className="grow text-center">
+            <span className="grow text-center text-gray-950">
                 Page {page} of {totalPages}
             </span>
+
             <button
                 onClick={() => setPage(page + 1)}
                 disabled={page === totalPages}
-                className="hover:bg-gray-400/30 font-bold py-2 px-4 rounded"
+                className="btn-primary"
             >
                 <ChevronRight />
             </button>
             <button
                 onClick={() => setPage(totalPages)}
                 disabled={page === totalPages}
-                className="hover:bg-gray-400/30 font-bold py-2 px-4 rounded"
+                className="btn-primary"
             >
                 <ChevronLast />
             </button>
