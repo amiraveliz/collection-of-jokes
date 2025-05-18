@@ -10,23 +10,25 @@ export default function Table() {
         jokes,
         page,
         totalPages,
-        limit,
         sort,
         setPage,
         setSort,
         fetchJokes,
+        loading,
     } = useJokeStore();
 
     useEffect(() => {
         fetchJokes();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [page, sort, limit]);
+    }, [page, sort, fetchJokes]);
 
     const handleSort = (field) => {
         setSort(field);
     };
 
-    if (jokes.length === 0) return <div className="p-8">Loading...</div>;
+    if (loading) return <div className="p-8">Loading...</div>;
+
+    if (jokes.length === 0 && !loading)
+        return <div className="p-8">No jokes found</div>;
 
     return (
         <div className="w-full max-w-4xl mx-auto py-4 text-black/90">

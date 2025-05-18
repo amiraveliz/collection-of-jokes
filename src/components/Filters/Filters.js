@@ -1,27 +1,22 @@
 "use client";
 
 import { useJokeStore } from "@/stores/useJokeStore";
+import { useEffect } from "react";
 
-const PAGE_SIZE_OPTIONS = [5, 10, 20, 50];
+import Limit from "./Limit";
+import Search from "./Search";
 
 export default function Filters() {
-    const { limit, setLimit } = useJokeStore();
+    const { limit, setLimit, fetchJokes, search, setSearch } = useJokeStore();
+
+    useEffect(() => {
+        fetchJokes();
+    }, [limit, search, fetchJokes]);
 
     return (
-        <div className="w-full max-w-4xl mx-auto text-black/90">
-            <select
-                className="py-2 px-4 border border-gray-300 rounded mb-2 block ml-auto"
-                value={limit}
-                onChange={(event) => {
-                    setLimit(event.target.value);
-                }}
-            >
-                {PAGE_SIZE_OPTIONS.map((option) => (
-                    <option key={option} value={option}>
-                        {option}
-                    </option>
-                ))}
-            </select>
+        <div className="w-full max-w-4xl mx-auto text-black/90 flex gap-4">
+            <Search setSearch={setSearch} />
+            <Limit limit={limit} setLimit={setLimit} />
         </div>
     );
 }
