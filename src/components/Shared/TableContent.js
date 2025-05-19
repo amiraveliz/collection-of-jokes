@@ -1,5 +1,6 @@
 import { ArrowDown, ArrowUp } from "lucide-react";
 import { memo } from "react";
+
 import TableFallback from "./TableFallback";
 
 function TableContent({
@@ -38,19 +39,15 @@ function TableContent({
                             <button
                                 onClick={() => handleSort(col.key)}
                                 disabled={totalPages === 0}
-                                className="flex items-center gap-1 w-full text-left cursor-pointer"
-                                role="button"
+                                className="flex items-center gap-1 w-full text-left cursor-pointer hover:opacity-70"
                             >
                                 {col.label}
-                                {sortField === col.key && (
-                                    <span className="transition-transform duration-200">
-                                        {sortDirection === "asc" ? (
-                                            <ArrowUp size={16} />
-                                        ) : (
-                                            <ArrowDown size={16} />
-                                        )}
-                                    </span>
-                                )}
+                                {sortField === col.key &&
+                                    (sortDirection === "asc" ? (
+                                        <ArrowUp size={16} />
+                                    ) : (
+                                        <ArrowDown size={16} />
+                                    ))}
                             </button>
                         </th>
                     ))}

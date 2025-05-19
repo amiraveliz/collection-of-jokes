@@ -1,8 +1,9 @@
+import { useShallow } from "zustand/react/shallow";
+import { motion } from "motion/react";
+
 import { useJokeStore } from "@/stores/useJokeStore";
 import Pagination from "../Shared/Pagination";
-import { useShallow } from "zustand/react/shallow";
 import TableContent from "../Shared/TableContent";
-import { motion } from "motion/react";
 
 const COLUMNS = [
     { key: "id", label: "Id", width: "10%" },

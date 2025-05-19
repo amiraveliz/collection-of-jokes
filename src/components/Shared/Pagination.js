@@ -16,23 +16,21 @@ function Pagination({ totalPages, page, setPage }) {
                 onClick={() => setPage(1)}
                 disabled={isPreviousDisabled}
                 className="btn-primary"
-                role="button"
                 title="First Page"
                 aria-label="First Page"
                 aria-disabled={isPreviousDisabled}
             >
-                <ChevronFirst aria-hidden="true" focusable="false" />
+                <ChevronFirst />
             </button>
             <button
                 onClick={() => setPage(page - 1)}
                 disabled={isPreviousDisabled}
                 className="btn-primary"
-                role="button"
                 title="Previous Page"
                 aria-label="Previous Page"
                 aria-disabled={isPreviousDisabled}
             >
-                <ChevronLeft aria-hidden="true" focusable="false" />
+                <ChevronLeft />
             </button>
 
             <span className="hidden md:block grow text-center">
@@ -47,23 +45,21 @@ function Pagination({ totalPages, page, setPage }) {
                 onClick={() => setPage(page + 1)}
                 disabled={isNextDisabled}
                 className="btn-primary"
-                role="button"
                 title="Next Page"
                 aria-label="Next Page"
                 aria-disabled={isNextDisabled}
             >
-                <ChevronRight aria-hidden="true" focusable="false" />
+                <ChevronRight />
             </button>
             <button
                 onClick={() => setPage(totalPages)}
                 disabled={isNextDisabled}
                 className="btn-primary"
-                role="button"
                 title="Last Page"
                 aria-label="Last Page"
                 aria-disabled={isNextDisabled}
             >
-                <ChevronLast aria-hidden="true" focusable="false" />
+                <ChevronLast />
             </button>
         </div>
     );

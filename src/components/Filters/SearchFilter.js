@@ -1,6 +1,7 @@
+import { useShallow } from "zustand/react/shallow";
+
 import { useJokeStore } from "@/stores/useJokeStore";
 import Search from "../Shared/Search";
-import { useShallow } from "zustand/react/shallow";
 
 function SearchFilter() {
     const { setSearch } = useJokeStore(
@@ -9,7 +10,7 @@ function SearchFilter() {
 
     return (
         <div className="grow">
-            <Search setValue={setSearch} text="Search for a joke..." />
+            <Search setValue={setSearch} description="Search for a joke..." />
         </div>
     );
 }

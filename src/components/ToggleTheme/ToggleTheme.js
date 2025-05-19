@@ -1,7 +1,7 @@
+import { memo, useEffect, useState } from "react";
 import { Moon, Sun } from "lucide-react";
-import { useEffect, useState } from "react";
 
-export default function ToggleTheme() {
+function ToggleTheme() {
     const [isDarkMode, setIsDarkMode] = useState(false);
 
     useEffect(() => {
@@ -39,12 +39,10 @@ export default function ToggleTheme() {
                 } Mode`}
                 onClick={handleToggleTheme}
             >
-                {isDarkMode ? (
-                    <Sun aria-hidden="true" focusable="false" />
-                ) : (
-                    <Moon aria-hidden="true" focusable="false" />
-                )}
+                {isDarkMode ? <Sun /> : <Moon />}
             </button>
         </div>
     );
 }
+
+export default memo(ToggleTheme);

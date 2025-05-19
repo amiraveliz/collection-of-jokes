@@ -1,7 +1,8 @@
-import useDebounce from "@/hooks/useDebounce";
 import { useEffect, useState, memo } from "react";
 
-function Search({ setValue, text }) {
+import useDebounce from "@/hooks/useDebounce";
+
+function Search({ setValue, description }) {
     const [searchValue, setSearchValue] = useState("");
     const debouncedSearchValue = useDebounce(searchValue);
 
@@ -11,9 +12,9 @@ function Search({ setValue, text }) {
 
     return (
         <input
-            placeholder={text}
+            placeholder={description}
             type="text"
-            aria-label={text}
+            aria-label={description}
             value={searchValue}
             className="w-full py-2 px-4 border border-gray-300 dark:border-secondary/50 rounded"
             onChange={(event) => {

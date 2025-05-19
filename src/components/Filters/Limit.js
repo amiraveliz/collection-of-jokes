@@ -1,6 +1,7 @@
+import { useShallow } from "zustand/react/shallow";
+
 import { useJokeStore } from "@/stores/useJokeStore";
 import Select from "../Shared/Select";
-import { useShallow } from "zustand/react/shallow";
 
 const PAGE_SIZE_OPTIONS = [5, 10, 20, 50];
 
@@ -17,7 +18,7 @@ export default function Limit() {
             options={PAGE_SIZE_OPTIONS}
             value={limit}
             setValue={setLimit}
-            text="Select limit of rows per page"
+            description="Select a limit of rows per page"
         />
     );
 }
