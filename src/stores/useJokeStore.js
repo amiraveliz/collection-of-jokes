@@ -12,7 +12,6 @@ export const useJokeStore = create((set, get) => ({
     search: "",
     loading: false,
     error: null,
-    isFirstLoad: false,
 
     setPage: (page) => set({ page }),
 

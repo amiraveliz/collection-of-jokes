@@ -13,6 +13,11 @@ export default function Limit() {
     );
 
     return (
-        <Select options={PAGE_SIZE_OPTIONS} value={limit} setValue={setLimit} />
+        <Select
+            options={PAGE_SIZE_OPTIONS}
+            value={limit}
+            setValue={setLimit}
+            text="Select limit of rows per page"
+        />
     );
 }

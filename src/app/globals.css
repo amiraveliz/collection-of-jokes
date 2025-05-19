@@ -15,8 +15,13 @@
         border-radius: 0.25rem;
         color: white;
         padding-block: calc(var(--spacing) * 2);
-        padding-inline: calc(var(--spacing) * 4);
+        padding-inline: calc(var(--spacing) * 2);
         cursor: pointer;
+
+        @variant md {
+            padding-block: calc(var(--spacing) * 2);
+            padding-inline: calc(var(--spacing) * 4);
+        }
     }
     .btn-primary:hover {
         background-color: var(--color-primary-100);

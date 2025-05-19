@@ -9,7 +9,7 @@ function SearchFilter() {
 
     return (
         <div className="grow">
-            <Search setValue={setSearch} />
+            <Search setValue={setSearch} text="Search for a joke..." />
         </div>
     );
 }

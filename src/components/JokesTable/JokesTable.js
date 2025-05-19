@@ -11,12 +11,13 @@ const COLUMNS = [
     { key: "punchline", label: "Punchline", width: "35%" },
 ];
 
-export default function Table() {
+export default function JokesTable() {
     const { jokes, loading, error, sort, setSort, page, setPage, totalPages } =
         useJokeStore(
             useShallow((state) => ({
                 jokes: state.jokes,
                 loading: state.loading,
+                error: state.error,
                 sort: state.sort,
                 setSort: state.setSort,
                 page: state.page,
@@ -25,13 +26,9 @@ export default function Table() {
             }))
         );
 
-    if (loading || error || jokes.length === 0) {
+    if (error) {
         return (
-            <TableFallback
-                loading={loading}
-                error={error}
-                hasRows={jokes.length > 0}
-            />
+            <div className="p-8">Failed to load items. Please try again</div>
         );
     }
 
@@ -43,6 +40,8 @@ export default function Table() {
                 sortDirection={sort.direction}
                 sortField={sort.field}
                 handleSort={setSort}
+                loading={loading}
+                totalPages={totalPages}
             />
             <Pagination totalPages={totalPages} page={page} setPage={setPage} />
         </div>

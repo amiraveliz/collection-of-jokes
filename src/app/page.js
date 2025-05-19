@@ -1,7 +1,7 @@
 "use client";
 
 import Filters from "@/components/Filters/Filters";
-import Table from "@/components/Table/Table";
+import JokesTable from "@/components/JokesTable/JokesTable";
 import { useJokeStore } from "@/stores/useJokeStore";
 import { useEffect } from "react";
 import { useShallow } from "zustand/react/shallow";
@@ -28,7 +28,7 @@ export default function Home() {
                 Collection of Jokes
             </h1>
             <Filters />
-            <Table />
+            <JokesTable />
         </div>
     );
 }
