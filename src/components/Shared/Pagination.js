@@ -35,11 +35,11 @@ function Pagination({ totalPages, page, setPage }) {
                 <ChevronLeft aria-hidden="true" focusable="false" />
             </button>
 
-            <span className="hidden md:block grow text-center text-gray-950">
+            <span className="hidden md:block grow text-center">
                 Page {page} of {totalPages}
             </span>
 
-            <span className="md:hidden grow text-center text-gray-950">
+            <span className="md:hidden grow text-center">
                 {page} of {totalPages}
             </span>
 

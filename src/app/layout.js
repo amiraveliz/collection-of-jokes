@@ -13,7 +13,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
     return (
         <html lang="en">
-            <body className={`${roboto.className} antialiased`}>
+            <body
+                className={`${roboto.className} antialiased dark:bg-primary-400 text-gray-800 dark:text-secondary/90`}
+            >
                 {children}
             </body>
         </html>

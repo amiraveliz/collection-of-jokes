@@ -2,6 +2,7 @@
 
 import Filters from "@/components/Filters/Filters";
 import JokesTable from "@/components/JokesTable/JokesTable";
+import ToggleTheme from "@/components/ToggleTheme/ToggleTheme";
 import { useJokeStore } from "@/stores/useJokeStore";
 import { useEffect } from "react";
 import { useShallow } from "zustand/react/shallow";
@@ -23,8 +24,9 @@ export default function Home() {
     }, [page, sort.field, sort.direction, limit, search, fetchJokes]);
 
     return (
-        <div className="p-8 flex justify-start flex-col items-center min-h-screen bg-secondary/20">
-            <h1 className="text-6xl font-light text-center mb-4 text-primary-300">
+        <div className="p-8 flex justify-start flex-col items-center min-h-screen">
+            <ToggleTheme />
+            <h1 className="text-5xl sm:text-6xl font-light text-center mb-4 text-primary-300 dark:text-secondary/90 dark:font-semibold">
                 Collection of Jokes
             </h1>
             <Filters />

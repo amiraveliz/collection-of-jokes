@@ -14,7 +14,7 @@ function TableContent({
 }) {
     return (
         <table
-            className="w-full table-fixed border border-gray-200"
+            className="w-full table-fixed border border-gray-200 dark:border-secondary/50"
             role="table"
             aria-label="Collection of Jokes"
         >
@@ -25,7 +25,7 @@ function TableContent({
                             key={col.key}
                             scope="col"
                             style={{ width: col.width }}
-                            className="p-2 border-b border-gray-200"
+                            className="p-2 border-b border-gray-200 dark:border-secondary/50"
                             role="columnheader"
                             aria-sort={
                                 sortField === col.key
@@ -62,7 +62,7 @@ function TableContent({
                         <tr
                             key={row.id}
                             role="row"
-                            className="flex flex-col md:table-row border-b border-gray-200"
+                            className="flex flex-col md:table-row border-b border-gray-200 dark:border-secondary/50"
                         >
                             {columns.map((col) => (
                                 <td
@@ -82,11 +82,11 @@ function TableContent({
                 {rows.length === 0 && (
                     <tr
                         role="row"
-                        className="flex flex-col md:table-row border-b border-gray-200"
+                        className="flex flex-col md:table-row border-b border-gray-200 dark:border-secondary/50"
                     >
                         <td
                             colSpan={columns.length}
-                            className="p-2 text-center text-gray-500"
+                            className="p-2 text-center"
                             role="cell"
                         >
                             <TableFallback loading={loading} error={error} />

@@ -5,7 +5,7 @@ function Select({ options, value, setValue, text }) {
     return (
         <div className="relative inline-block">
             <select
-                className="w-[72px] appearance-none py-2 px-4 border border-gray-300 rounded cursor-pointer"
+                className="w-[72px] appearance-none py-2 px-4 border border-gray-300 dark:border-secondary/50 rounded cursor-pointer"
                 value={value}
                 aria-label={text}
                 role="listbox"

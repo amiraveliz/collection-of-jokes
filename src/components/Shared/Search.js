@@ -15,7 +15,7 @@ function Search({ setValue, text }) {
             type="text"
             aria-label={text}
             value={searchValue}
-            className="w-full py-2 px-4 border border-gray-300 rounded"
+            className="w-full py-2 px-4 border border-gray-300 dark:border-secondary/50 rounded"
             onChange={(event) => {
                 setSearchValue(event.target.value);
             }}

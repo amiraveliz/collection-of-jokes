@@ -1,12 +1,14 @@
 @import "tailwindcss";
 
 @theme {
-    --color-primary-400: oklch(0.27 0.0612 241.56);
+    --color-primary-400: oklch(0.1 0.0612 241.56);
     --color-primary-300: oklch(0.66 0.1385 234.89);
     --color-primary-200: oklch(0.48 0.0992 234.1);
     --color-primary-100: oklch(0.77 0.1403 220.91);
     --color-secondary: oklch(0.92 0.0292 64.12);
 }
+
+@custom-variant dark (&:where(.dark, .dark *));
 
 @layer components {
     .btn-primary {
@@ -22,35 +24,21 @@
             padding-block: calc(var(--spacing) * 2);
             padding-inline: calc(var(--spacing) * 4);
         }
+
+        @variant dark {
+            background-color: var(--color-primary-200);
+        }
     }
     .btn-primary:hover {
         background-color: var(--color-primary-100);
         opacity: 0.9;
+
+        @variant dark {
+            background-color: var(--color-primary-200);
+        }
     }
     .btn-primary:disabled {
         background-color: var(--color-gray-400);
         opacity: 0.3;
     }
-}
-
-:root {
-    --background: #ffffff;
-    --foreground: #171717;
-}
-
-@theme inline {
-    --color-background: var(--background);
-    --color-foreground: var(--foreground);
-}
-
-@media (prefers-color-scheme: dark) {
-    :root {
-        --background: #0a0a0a;
-        --foreground: #ededed;
-    }
-}
-
-body {
-    background: var(--background);
-    color: var(--foreground);
 }

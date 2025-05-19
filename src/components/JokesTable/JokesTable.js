@@ -2,7 +2,7 @@ import { useJokeStore } from "@/stores/useJokeStore";
 import Pagination from "../Shared/Pagination";
 import { useShallow } from "zustand/react/shallow";
 import TableContent from "../Shared/TableContent";
-import TableFallback from "../Shared/TableFallback";
+import { motion } from "motion/react";
 
 const COLUMNS = [
     { key: "id", label: "Id", width: "10%" },
@@ -33,7 +33,12 @@ export default function JokesTable() {
     }
 
     return (
-        <div className="w-full max-w-4xl mx-auto py-4 text-black/90">
+        <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            className="w-full max-w-4xl mx-auto py-4"
+        >
             <TableContent
                 columns={COLUMNS}
                 rows={jokes}
@@ -44,6 +49,6 @@ export default function JokesTable() {
                 totalPages={totalPages}
             />
             <Pagination totalPages={totalPages} page={page} setPage={setPage} />
-        </div>
+        </motion.div>
     );
 }
