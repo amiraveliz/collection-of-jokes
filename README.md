@@ -2,7 +2,7 @@
 
 ### Demo
 
-[Collection of Jokes](https://)
+[Collection of Jokes](https://collection-of-jokes-five.vercel.app)
 
 ### Development
 
@@ -18,7 +18,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Tools
 
-Nextjs 15, React 19, React Hooks, Tailwind, Zustand, motion.
+Nextjs 15, React 19, React Hooks, Tailwind, Zustand, motion and others.
 
 ## Description
 
