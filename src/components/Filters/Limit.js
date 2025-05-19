@@ -1,5 +1,3 @@
-"use client";
-
 import { useJokeStore } from "@/stores/useJokeStore";
 import Select from "../Shared/Select";
 import { useShallow } from "zustand/react/shallow";
@@ -15,10 +13,6 @@ export default function Limit() {
     );
 
     return (
-        <Select
-            options={PAGE_SIZE_OPTIONS}
-            value-={limit}
-            setValue={setLimit}
-        />
+        <Select options={PAGE_SIZE_OPTIONS} value={limit} setValue={setLimit} />
     );
 }

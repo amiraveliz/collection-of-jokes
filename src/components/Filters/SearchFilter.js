@@ -1,10 +1,8 @@
-"use client";
-
 import { useJokeStore } from "@/stores/useJokeStore";
 import Search from "../Shared/Search";
 import { useShallow } from "zustand/react/shallow";
 
-function SearchJokes() {
+function SearchFilter() {
     const { setSearch } = useJokeStore(
         useShallow((state) => ({ setSearch: state.setSearch }))
     );
@@ -16,4 +14,4 @@ function SearchJokes() {
     );
 }
 
-export default SearchJokes;
+export default SearchFilter;

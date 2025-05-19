@@ -1,9 +1,9 @@
 import { memo } from "react";
 
-function Select({ options = [], value, setValue }) {
+function Select({ options, value, setValue }) {
     return (
         <select
-            className="py-2 px-4 border border-gray-300 rounded"
+            className="py-2 px-4 border border-gray-300 rounded cursor-pointer"
             value={value}
             onChange={(event) => {
                 setValue(event.target.value);
