@@ -1,37 +1,26 @@
+import JokesAPI from "@/api/Jokes";
 import { create } from "zustand";
+
+let abortController = null;
 
 export const useJokeStore = create((set, get) => ({
     jokes: [],
-    total: 0,
     page: 1,
     limit: 10,
     sort: { field: "id", direction: "asc" },
     totalPages: 0,
     search: "",
     loading: false,
+    error: null,
+    isFirstLoad: false,
 
-    fetchJokes: async () => {
-        set({ loading: true });
-        const { page, sort, limit, search } = get();
-        const res = await fetch(
-            `/api/jokes?page=${page}&limit=${limit}&sortBy=${sort.field}&order=${sort.direction}&search=${search}`
-        );
-        const data = await res.json();
-        set({
-            jokes: data.items,
-            total: data.total,
-            totalPages: data.totalPages,
-        });
-        set({ loading: false });
-    },
+    setPage: (page) => set({ page }),
 
-    setPage: async (page) => set({ page }),
+    setLimit: (limit) => set({ limit, page: 1 }),
 
-    setLimit: async (limit) => set({ limit, page: 1 }),
+    setSearch: (search) => set({ search, page: 1 }),
 
-    setSearch: async (search) => set({ search, page: 1 }),
-
-    setSort: async (field) =>
+    setSort: (field) =>
         set((state) => ({
             sort: {
                 field,
@@ -41,4 +30,42 @@ export const useJokeStore = create((set, get) => ({
                         : "asc",
             },
         })),
+
+    fetchJokes: async () => {
+        get().abortFetch();
+        abortController = new AbortController();
+        const signal = abortController.signal;
+
+        set({ loading: true, error: null });
+
+        const { page, sort, limit, search } = get();
+
+        const data = await JokesAPI.getJokes({
+            page,
+            limit,
+            sort,
+            search,
+            signal,
+        });
+
+        if (data.error) {
+            set({
+                loading: false,
+                error: data.error,
+            });
+            return;
+        }
+
+        set({
+            jokes: data.jokes,
+            totalPages: data.totalPages,
+            loading: false,
+        });
+    },
+
+    abortFetch: () => {
+        if (abortController) {
+            abortController.abort();
+        }
+    },
 }));

@@ -2,33 +2,56 @@
 
 import { useJokeStore } from "@/stores/useJokeStore";
 import { ArrowDown, ArrowUp } from "lucide-react";
+import Pagination from "../Shared/Pagination";
+import { useShallow } from "zustand/react/shallow";
 import { useEffect } from "react";
-import Pagination from "./Pagination";
+import TableFallback from "./TableFallback";
 
 export default function Table() {
     const {
         jokes,
-        page,
-        totalPages,
-        sort,
-        setPage,
-        setSort,
-        fetchJokes,
         loading,
-    } = useJokeStore();
+        error,
+        sort,
+        setSort,
+        page,
+        setPage,
+        totalPages,
+        limit,
+        search,
+        fetchJokes,
+    } = useJokeStore(
+        useShallow((state) => ({
+            jokes: state.jokes,
+            loading: state.loading,
+            sort: state.sort,
+            setSort: state.setSort,
+            page: state.page,
+            setPage: state.setPage,
+            totalPages: state.totalPages,
+            limit: state.limit,
+            search: state.search,
+            fetchJokes: state.fetchJokes,
+        }))
+    );
 
     useEffect(() => {
         fetchJokes();
-    }, [page, sort, fetchJokes]);
+    }, [page, sort.field, sort.direction, limit, search, fetchJokes]);
 
     const handleSort = (field) => {
         setSort(field);
     };
 
-    if (loading) return <div className="p-8">Loading...</div>;
-
-    if (jokes.length === 0 && !loading)
-        return <div className="p-8">No jokes found</div>;
+    if (loading || error || jokes.length === 0) {
+        return (
+            <TableFallback
+                loading={loading}
+                error={error}
+                hasData={jokes.length > 0}
+            />
+        );
+    }
 
     return (
         <div className="w-full max-w-4xl mx-auto py-4 text-black/90">

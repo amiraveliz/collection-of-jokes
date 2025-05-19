@@ -4,8 +4,9 @@ import {
     ChevronLeft,
     ChevronRight,
 } from "lucide-react";
+import { memo } from "react";
 
-export default function Pagination({ totalPages, page, setPage }) {
+function Pagination({ totalPages, page, setPage }) {
     return (
         <div className="flex gap-1 items-center mt-4 text-sm">
             <button
@@ -44,3 +45,5 @@ export default function Pagination({ totalPages, page, setPage }) {
         </div>
     );
 }
+
+export default memo(Pagination);

@@ -1,19 +1,24 @@
+"use client";
+
+import { useJokeStore } from "@/stores/useJokeStore";
+import Select from "../Shared/Select";
+import { useShallow } from "zustand/react/shallow";
+
 const PAGE_SIZE_OPTIONS = [5, 10, 20, 50];
 
-export default function Limit({ limit, setLimit }) {
+export default function Limit() {
+    const { limit, setLimit } = useJokeStore(
+        useShallow((state) => ({
+            limit: state.limit,
+            setLimit: state.setLimit,
+        }))
+    );
+
     return (
-        <select
-            className="py-2 px-4 border border-gray-300 rounded"
-            value={limit}
-            onChange={(event) => {
-                setLimit(event.target.value);
-            }}
-        >
-            {PAGE_SIZE_OPTIONS.map((option) => (
-                <option key={option} value={option}>
-                    {option}
-                </option>
-            ))}
-        </select>
+        <Select
+            options={PAGE_SIZE_OPTIONS}
+            value-={limit}
+            setValue={setLimit}
+        />
     );
 }
